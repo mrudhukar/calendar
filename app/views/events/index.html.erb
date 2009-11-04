@@ -1,0 +1,10 @@
+<% @title = "Historic events" %>
+<% @page_action = link_to("Add new event", new_event_path)  %>
+
+<ul>
+<% @events.each do |event| %>
+  <li>
+    <%= event.name %> <%= link_to "Edit", edit_event_path(event) %>, <%= link_to "Destroy", event_path(event), :method => :delete %>
+  </li>
+<% end %>
+</ul>

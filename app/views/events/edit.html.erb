@@ -1,0 +1,29 @@
+<% @title = "Edit #{@event.name}" %>
+
+<% form_for @event do |f| %>
+  <%= f.error_messages %>
+  <div class="label_item">
+    <%= f.label :name %>
+    <%= f.text_field :name, :size => 40 %>
+  </div>
+  <div class="label_item">
+    <%= f.label :from %>
+    <%= f.text_field :from %>
+  </div>
+  <div class="label_item">
+    <%= f.label :to %>
+    <%= f.text_field :to %>
+  </div>
+  <div class="label_item">
+    <%= f.label :event_type %>
+    <%= f.select :event_type, Event::EventTypes %>
+  </div>
+  <div class="label_item">
+    <%= f.label :details %>
+    <%= f.text_area :details %>
+  </div>
+  <div class="label_item">
+    <label style="visibility:hidden">.</label>
+    <%= f.submit "Create", :class => "button" %>&nbsp;&nbsp;or&nbsp;&nbsp;<%= link_to "Cancel", events_path %>
+  </div>
+<% end %>

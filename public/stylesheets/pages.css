@@ -1,0 +1,39 @@
+/* 
+    Document   : pages
+    Created on : 3 Oct, 2009, 8:02:04 PM
+    Author     : mrudhu
+    Description: Specific to individual pages
+*/
+
+
+/*************************** New Common Item **********************************/
+div.label_item{
+  float: left;
+  clear: left;
+  margin: 5px 0;
+  width: 100%;
+}
+
+label {
+  width: 150px;
+  float: left;
+  text-align: right;
+  margin-right: 0.5em;
+  display: block;
+}
+
+div.label_item input,
+div.label_item select{
+  margin-bottom: 10px;
+  float:left;
+}
+
+.label_item img{
+  float: left;
+  height:20px;
+  margin-left:10px;
+}
+
+.submit {
+  margin-left: 5.5em;
+}
