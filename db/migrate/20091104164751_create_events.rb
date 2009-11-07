@@ -6,6 +6,7 @@ class CreateEvents < ActiveRecord::Migration
       t.date :to
       t.string :event_type
       t.text :details
+      t.string :color
 
       t.timestamps
     end
