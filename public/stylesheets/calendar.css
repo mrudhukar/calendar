@@ -100,7 +100,7 @@ input.button:hover,
 
 #banner {
   font-weight: bold;
-  width: 100%;
+  min-width: 100%;
   background: url("/images/n1.gif");
   padding: 10px 0;
 }
@@ -122,59 +122,9 @@ input.button:hover,
   font-size: 0.5em
 }
 
-#banner .links {
-  float: right;
-  margin-right: 10px;
-  color: white;
-  opacity: 0.8;
-  margin: 10px 30px;
-  width: 300px;
-}
-
-#banner .links small {
-  float: right;
-  font-weight: normal;
-  margin: 13px 0 0 8px;
-}
-
-#banner .links small a{
-  margin-left: 5px;
-}
-
-#banner .links .groups_list {
-  position: relative;
-  background: #121212 none repeat scroll 0 0;
-  padding: 10px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-}
-
-#banner .links .groups_list a.my_groups_link {
-  float: right;
-}
-
-#banner .links .groups_list #my_groups {
-  position: absolute;
-  top: 30px;
-  left: 0;
-  width: 230px;
-  background: #121212 none repeat scroll 0 0;
-  color: white;
-  font-weight: normal;
-}
-
-#banner .links .groups_list #my_groups ul {
-  list-style-type: none;
-}
-
-#banner .links a,
-#banner .links a:visited {
-  color: white;
-}
-
 #main {
   min-height: 300px;
-  width: 100%;
+  min-width: 100%;
   background-color: white;
   color: #121212;
   -moz-border-radius-bottomleft: 15px;

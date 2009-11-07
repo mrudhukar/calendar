@@ -1,6 +1,9 @@
 <% @title = "Historic events" %>
 <% @page_action = link_to("Add new event", new_event_path)  %>
 
+<div id="events">
+
+</div>
 <ul>
 <% @events.each do |event| %>
   <li>
@@ -8,3 +11,21 @@
   </li>
 <% end %>
 </ul>
+<table border="1" rules="all">
+  <thead>
+    <tr>
+      <th>Events/Years</th>
+      <% (1947..2009).each do |year| %>
+        <td colspan="12"><%= year %></td>
+      <% end %>
+    </tr>
+    <% Event::EventTypes.each do |type| %>
+      <tr>
+        <% Event.find_by_type(type).each do |event| %>
+          
+        <% end %>
+      </tr>
+    <% end %>
+    
+  </thead>
+</table>
