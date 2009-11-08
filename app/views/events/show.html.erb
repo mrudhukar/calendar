@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title><%= "#{@event.event_type} - #{@event.name}" %></title>
+  </head>
+  <body>
+    <span >
+      <b><%= "#{@event.event_type} - #{@event.name}" %></b>
+    </span>
+
+    <div class="clearfix" style="margin: 10px; font-size:0.9em;">
+      <span style="color: #888">From:</span> <%= @event.from_date.strftime("%B %d, %Y") %> &nbsp;&nbsp;&nbsp;&nbsp;
+      <span style="color: #888">To:</span> <%= @event.to_date.strftime("%B %d, %Y")%> <br><br>
+      <%= @event.details %>
+    </div>
+
+    <div style="margin: 10px; font-size:0.85em;">
+      <%= link_to "Edit", edit_event_path(@event) %>&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to "Delete", event_path(@event), :method => :delete, :onclick => "self.close()" %>
+    </div>
+  </body>
+</html>

@@ -1,31 +1,48 @@
 <% @title = "Historic events" %>
 <% @page_action = link_to("Add new event", new_event_path)  %>
 
-<div id="events">
-
-</div>
-<ul>
-<% @events.each do |event| %>
-  <li>
-    <%= event.name %> <%= link_to "Edit", edit_event_path(event) %>, <%= link_to "Destroy", event_path(event), :method => :delete %>
-  </li>
-<% end %>
-</ul>
 <table border="1" rules="all">
   <thead>
     <tr>
-      <th>Events/Years</th>
-      <% (1947..2009).each do |year| %>
+      <th>Years</th>
+      <% (@from_year..@to_year).each do |year| %>
         <td colspan="12"><%= year %></td>
       <% end %>
     </tr>
-    <% Event::EventTypes.each do |type| %>
-      <tr>
-        <% Event.find_by_type(type).each do |event| %>
-          
+    <tr>
+      <th>Events</th>
+      <% (@from_year..@to_year).each do |year| %>
+        <% MONTHS.each do |month| %>
+          <td colspan="1"><%= month %></td>
         <% end %>
-      </tr>
-    <% end %>
-    
+      <% end %>
+    </tr>
   </thead>
+  <% Event::EventTypes.each do |type| %>
+    <tr>
+      <td><%= type %></td>
+      <% events = Event.find_by_type(type,@from_year,@to_year) %>
+      <% if events.any? %>
+        <% if (months = (events[0].from_date.year - @from_year)*12 + events[0].from_date.month - 1 ) > 0 %>
+          <td colspan="<%= months %>"> - </td>
+        <% end %>
+        <% events.each_with_index do |e, i| %>
+          <td colspan="<%= e.duration(@to_year) %>" style="background-color: <%= e.color %>"> <%= event_link(e) %> </td>
+          <% if events[i+1] %>
+            <% if (m_diff = (events[i+1].from_date - e.to_date).to_i/30) > 0 %>
+              <td colspan="<%= m_diff %>" > - </td>
+            <% end %>
+          <% elsif e.to_date < Date.new(@to_year + 1) - 1.day %>
+            <td colspan="<%= (Date.new(@to_year + 1) - 1.day - e.to_date).to_i/30 %>" > - </td>
+          <% end %>
+        <% end %>
+        
+      <% else %>
+        <td colspan="<%= (@to_year - @from_year + 1)*12 %>"> - </td>
+      <% end %>
+    </tr>
+  <% end %>
 </table>
+<br><br>
+
+<%= link_to("Add new event", new_event_path, :class => "button")  %>

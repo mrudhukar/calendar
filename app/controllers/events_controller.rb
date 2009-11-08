@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :fetch_event, :only => [:edit, :update, :destroy]
+  before_filter :fetch_event, :only => [:edit, :update, :destroy, :show]
 
   def new
     @event = Event.new()
@@ -9,13 +9,18 @@ class EventsController < ApplicationController
     @event = Event.new(params[:event])
     if @event.save
       flash[:notice] = "Success added"
-      redirect_to events_path
+      redirect_to new_event_path
     else
       render :action => "new"
     end
   end
 
+  def show
+    render :layout => false
+  end
+
   def edit
+    render :layout => false
   end
 
   def update
@@ -28,7 +33,8 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @from_year = params[:from_year].blank? ? 1947 : params[:from_year].to_i
+    @to_year = params[:to_year].blank? ? 2009 : params[:to_year].to_i
   end
 
   def destroy

@@ -20,7 +20,7 @@ html[xmlns] .clearfix {
 }
 
 body{
-  background-color: #EFEBDF;
+  background: #EFEBDF url("/images/n1.gif");
   color: #222222;
   font-family: Lucida Grande,arial,helvetica,sans-serif;
   background-color: #121212;
@@ -101,7 +101,6 @@ input.button:hover,
 #banner {
   font-weight: bold;
   min-width: 100%;
-  background: url("/images/n1.gif");
   padding: 10px 0;
 }
 
@@ -233,4 +232,8 @@ table {
 
 .lefted {
   float: left !important;
+}
+
+table td{
+  text-align: center;
 }
