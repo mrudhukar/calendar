@@ -3,6 +3,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new()
+    @type_strings = Type.all(:order => "position ASC").collect{|t| [t.label, t.id]}
   end
 
   def create
@@ -20,6 +21,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @type_strings = Type.all(:order => "position ASC").collect{|t| [t.label, t.id]}
     render :layout => false
   end
 
@@ -33,6 +35,7 @@ class EventsController < ApplicationController
   end
 
   def index
+    @types = Type.all(:order => "position ASC")
     @from_year = params[:from_year].blank? ? 1947 : params[:from_year].to_i
     @to_year = params[:to_year].blank? ? 2009 : params[:to_year].to_i
   end

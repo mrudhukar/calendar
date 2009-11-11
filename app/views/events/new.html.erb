@@ -15,8 +15,8 @@
     <%= f.text_field :to_date %>
   </div>
   <div class="label_item">
-    <%= f.label :event_type %>
-    <%= f.select :event_type, Event::EventTypes %>
+    <%= f.label :type %>
+    <%= f.select :type_id, @type_strings %>
   </div>
   <div class="label_item">
     <%= f.label :color %>

@@ -1,10 +1,10 @@
 <html>
   <head>
-    <title><%= "#{@event.event_type} - #{@event.name}" %></title>
+    <title><%= "#{@event.type.label} - #{@event.name}" %></title>
   </head>
   <body>
     <span >
-      <b><%= "#{@event.event_type} - #{@event.name}" %></b>
+      <b><%= "#{@event.type.label} - #{@event.name}" %></b>
     </span>
 
     <div class="clearfix" style="margin: 10px; font-size:0.9em;">

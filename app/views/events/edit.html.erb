@@ -1,12 +1,12 @@
 <html>
   <head>
-    <title><%= "#{@event.event_type} - #{@event.name}" %></title>
+    <title><%= "#{@event.type.label} - #{@event.name}" %></title>
     <%= stylesheet_link_tag "calendar" %>
     <%= stylesheet_link_tag "pages" %>
   </head>
   <body style="background: white">
     <span >
-      <b><%= "#{@event.event_type} - #{@event.name}" %></b>
+      <b><%= "#{@event.type.label} - #{@event.name}" %></b>
     </span>
 
     <% form_for @event do |f| %>
@@ -24,8 +24,8 @@
         <%= f.text_field :to_date %>
       </div>
       <div class="label_item">
-        <%= f.label :event_type %>
-        <%= f.select :event_type, Event::EventTypes %>
+        <%= f.label :type %>
+        <%= f.select :type_id, @type_strings %>
       </div>
       <div class="label_item">
         <%= f.label :color %>
