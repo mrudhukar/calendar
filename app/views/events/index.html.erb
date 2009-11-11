@@ -13,14 +13,14 @@
       <th>Events</th>
       <% (@from_year..@to_year).each do |year| %>
         <% MONTHS.each do |month| %>
-          <td colspan="1" style="position: fixed"><%= month %></td>
+          <td colspan="1"><%= month %></td>
         <% end %>
       <% end %>
     </tr>
   </thead>
   <% Event::EventTypes.each do |type| %>
     <tr>
-      <td><%= type %></td>
+      <td style="position: fixed"><%= type %></td>
       <% events = Event.find_by_type(type,@from_year,@to_year) %>
       <% if events.any? %>
         <% if (months = (events[0].from_date.year - @from_year)*12 + events[0].from_date.month - 1 ) > 0 %>
