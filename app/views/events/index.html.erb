@@ -20,7 +20,7 @@
   </thead>
   <% Event::EventTypes.each do |type| %>
     <tr>
-      <td style="position: fixed"><%= type %></td>
+      <td><%= type %></td>
       <% events = Event.find_by_type(type,@from_year,@to_year) %>
       <% if events.any? %>
         <% if (months = (events[0].from_date.year - @from_year)*12 + events[0].from_date.month - 1 ) > 0 %>
